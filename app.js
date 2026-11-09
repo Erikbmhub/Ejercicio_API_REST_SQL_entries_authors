@@ -1,6 +1,9 @@
 // Importamos Express.
 const express = require("express");
 
+// Importamos Morgan para registrar las peticiones HTTP.
+const morgan = require("morgan");
+
 // Importamos las rutas de entries.
 const entriesRoutes = require("./routes/entries.routes");
 
@@ -12,6 +15,9 @@ const app = express();
 
 // Permitimos que Express pueda recibir datos en formato JSON.
 app.use(express.json());
+
+// Configuramos Morgan para registrar las peticiones HTTP.
+app.use(morgan("dev"));
 
 // Conectamos las rutas de entries con el prefijo /api/entries.
 app.use("/api/entries", entriesRoutes);

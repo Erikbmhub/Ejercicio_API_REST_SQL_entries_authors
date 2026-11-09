@@ -5,13 +5,22 @@ const { Pool } = require("pg");
 require("dotenv").config();
 
 // Creamos el conjunto de conexiones a PostgreSQL.
-const pool = new Pool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
-  password: process.env.DB_PASSWORD,
-});
+const pool = new Pool(
+  process.env.DATABASE_URL
+    ? {
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      }
+    : {
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        database: process.env.DB_DATABASE,
+        port: process.env.DB_PORT,
+        password: process.env.DB_PASSWORD,
+      }
+);
 
 // Exportamos el Pool para utilizarlo desde otros archivos.
 module.exports = pool;
