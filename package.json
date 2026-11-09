@@ -2,30 +2,31 @@
   "name": "ejercicio_api_rest_entries_authors",
   "version": "1.0.0",
   "description": "Ejercicio para poner en practica consultas a base de datos relacional con API REST",
-  "main": "app.js",
-  "scripts": {
-    "test": "jest",
-    "start" : "nodemon app.js"
+  "homepage": "https://github.com/JavierEspinosaP/Ejercicio_API_REST_entries_authors#readme",
+  "bugs": {
+    "url": "https://github.com/JavierEspinosaP/Ejercicio_API_REST_entries_authors/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JavierEspinosaP/Ejercicio_API_REST_entries_authors.git"
   },
-  "author": "Javier Espinosa",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JavierEspinosaP/Ejercicio_API_REST_entries_authors/issues"
+  "author": "Javier Espinosa",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon app.js"
   },
-  "homepage": "https://github.com/JavierEspinosaP/Ejercicio_API_REST_entries_authors#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.3.0",
+    "nodemon": "^3.0.1",
+    "pg": "^8.16.3"
+  },
   "devDependencies": {
     "jest": "^29.7.0",
     "jest-stare": "^2.5.1",
     "supertest": "^6.3.3"
-  },
-  "dependencies": {
-    "nodemon": "^3.0.1",
-    "dotenv": "^17.2.0",
-    "express": "^5.1.0",
-    "pg": "^8.16.3"
   }
 }
