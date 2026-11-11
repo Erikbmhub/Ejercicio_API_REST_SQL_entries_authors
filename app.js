@@ -1,8 +1,8 @@
 // Importamos Express.
 const express = require("express");
 
-// Importamos Morgan para registrar las peticiones HTTP.
-const morgan = require("morgan");
+// Importamos Morgan personalizado con nuestros tokens.
+const morgan = require("./middlewares/morgan.middleware");
 
 // Importamos las rutas de entries.
 const entriesRoutes = require("./routes/entries.routes");
@@ -10,14 +10,20 @@ const entriesRoutes = require("./routes/entries.routes");
 // Importamos las rutas de authors.
 const authorsRoutes = require("./routes/authors.routes");
 
+// Importamos Helmet para proteger las cabeceras HTTP.
+const helmet = require("helmet");
+
 // Creamos la aplicación Express.
 const app = express();
+
+// Activamos Helmet para configurar las cabeceras HTTP de seguridad.
+app.use(helmet());
 
 // Permitimos que Express pueda recibir datos en formato JSON.
 app.use(express.json());
 
-// Configuramos Morgan para registrar las peticiones HTTP.
-app.use(morgan("dev"));
+// Registramos las peticiones HTTP con nuestro formato personalizado.
+app.use(morgan(":host :method :clean-url :status :response-time ms :body"));
 
 // Conectamos las rutas de entries con el prefijo /api/entries.
 app.use("/api/entries", entriesRoutes);
